@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/shuttle.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+<!-- appendix -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Carousel</title>
+<style>
+  /* CSS 样式 */
+  .video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 让视频容器铺满整个视口高度 */
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    max-width: 1080px; /* 设置最大宽度，防止视频过大超出屏幕 */
+  }
+  .video {
+    width: 100%;
+    height: auto;
+    display: none; /* 初始隐藏所有视频 */
+    max-width: auto; /* 视频最大宽度为网页宽度 */
+  }
+  .active {
+    display: block; /* 显示当前活动的视频 */
+  }
+  .controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+  .control-button {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  .nav-dots {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  .active-dot {
+    background-color: #fff;
+  }
+
+</style>
+
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <!-- <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
+</nav>
+
+
+<!-- author -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/xhd0612">Haodong Xiang*</a><sup>1</sup>,</span>
+              <!-- Haodong Xiang*<sup>1</sup>,</span> -->
+            <span class="author-block">
+              <!-- <a href="xxx.com">Xinghui Li*</a><sup>1</sup>,</span> -->
+              Xinghui Li*<sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://cklibra.github.io/">Kai Cheng*</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <!-- <a href="xxx.com">Xiansong Lai</a><sup>1</sup>, -->
+              Xiansong Lai<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <!-- <a href="xxx.com">Wanting Zhang</a><sup>1</sup>, -->
+              Wanting Zhang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <!-- <a href="xxx.com">Zhichao Liao</a><sup>1</sup>, -->
+              Zhichao Liao<sup>1</sup>,
+            </span>
+            <!-- <span class="author-block">
+              <a href="https://cklibra.github.io/">Kai Cheng</a><sup>2✉</sup>,
+            </span> -->
+            <span class="author-block">
+              Long Zeng<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.sigs.tsinghua.edu.cn/lxp/main.htm">Xueping Liu</a><sup>1✉</sup> 
+              <!-- Xueping Liu<sup>1✉</sup>  -->
+            </span>
+            <p>(* Equal Contribution)</p>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>	Tsinghua University,</span>
+            <span class="author-block"><sup>2</sup>University of Science and Technology of China</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2405.19671"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2405.19671"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/xhd0612/GaussianRoom"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- reconstruction_results -->
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/ReconstructionResults_720p.mp4"
+                type="video/mp4">
+      </video>
+
+      <h2 class="subtitle has-text-centered">
+        GaussianRoom Reconstruction results.
+      </h2>
+
+    </div>
+  </div>
+</section> -->
+
+<div class="columns is-centered has-text-centered">
+  <div class="video-container">
+    <!-- 第一个视频 -->
+    <video class="video active" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/0050.mp4" type="video/mp4">
+    </video>
+    <!-- 第二个视频 -->
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/0085.mp4" type="video/mp4">
+    </video>
+    <!-- 第三个视频 -->
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/0580.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/0616.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/0721.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/8b5caf3398.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/8d563fc2cc.mp4" type="video/mp4">
+    </video>
+    <!-- 在此添加更多视频 -->
+
+    <!-- 控制按钮 -->
+    <div class="controls">
+      <button class="control-button prev" onclick="prevVideo()">❮</button>
+      <button class="control-button next" onclick="nextVideo()">❯</button>
+    </div>
+  </div>
+</div>
+
+<!-- 导航点 -->
+<div class="nav-dots">
+  <span class="dot" onclick="switchVideo(0)"></span>
+  <span class="dot" onclick="switchVideo(1)"></span>
+  <span class="dot" onclick="switchVideo(2)"></span>
+  <span class="dot" onclick="switchVideo(3)"></span>
+  <span class="dot" onclick="switchVideo(4)"></span>
+  <span class="dot" onclick="switchVideo(5)"></span>
+  <span class="dot" onclick="switchVideo(6)"></span>
+  <!-- 添加更多导航点 -->
+</div>
+
+<!-- JavaScript 代码 -->
+<script>
+  // 获取所有视频元素
+  const videos = document.querySelectorAll(".video");
+  // 获取所有导航点元素
+  const dots = document.querySelectorAll(".dot");
+  // 当前活动视频的索引
+  let currentIndex = 0;
+
+  // 切换到指定索引视频的函数
+  function switchVideo(index) {
+    currentIndex = index;
+    // 隐藏所有视频
+    videos.forEach(video => video.classList.remove("active"));
+    // 显示指定索引的视频
+    videos[index].classList.add("active");
+    // 更新导航点状态
+    updateDots();
+  }
+
+  // 切换到上一个视频的函数
+  function prevVideo() {
+    currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 切换到下一个视频的函数
+  function nextVideo() {
+    currentIndex = (currentIndex + 1) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 更新导航点状态的函数
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active-dot"));
+    dots[currentIndex].classList.add("active-dot");
+  }
+
+  // 初始化时更新导航点状态
+  updateDots();
+</script>
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recently, 3D Gaussian Splatting(3DGS) has revolutionized neural rendering with its high-quality rendering and real-time speed. 
+            However,  when it comes to indoor scenes with a significant number of textureless areas, 
+            3DGS yields incomplete and noisy reconstruction results due to the poor initialization of the point cloud and under-constrained optimization. 
+            Inspired by the continuity of signed distance field (SDF), which naturally has advantages in modeling surfaces, 
+            we present a unified optimizing framework integrating neural SDF with 3DGS.
+            This framework incorporates a learnable neural SDF field to guide the densification and pruning of Gaussians, 
+            enabling Gaussians to accurately model scenes even with poor initialized point clouds. 
+            At the same time, the geometry represented by Gaussians improves the efficiency of the SDF field by piloting its point sampling. 
+            Additionally, we regularize the optimization with normal and edge priors to eliminate geometry ambiguity in textureless areas and improve the details. 
+            Extensive experiments in ScanNet and ScanNet++ show that our method achieves state-of-the-art performance in both surface reconstruction and novel view synthesis.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Overview. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview</h2>
+        <div class="content has-text-justified">
+          <!-- <iframe src="./static/images/overview.pdf" width="600" height="400"></iframe> -->
+            <img src="./static/images/overview.png" alt="overview" width="12000" height="600">
+            <p>
+              GaussianRoom integrates neural SDF within 3DGS and forms a positive cycle improving each other. 
+              (a) We employ the geometric information from the SDF to constrain the Gaussian primitives, ensuring their spatial distribution aligns with the scene surface.
+              (b) We utilize rasterized depth from Gaussian to efficiently provide coarse geometry information, narrowing down the sampling range to accelerate the optimization of neural SDF.
+              (c) We introduce monocular normal prior and edge prior, addressing the challenges of texture-less areas and fine structures indoors.
+            </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Overview. -->
+
+    <!-- densification. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">SDF-guided Primitive Distribution Stategy</h2>
+        <div class="content has-text-justified">
+          <!-- <iframe src="./static/images/overview.pdf" width="600" height="400"></iframe> -->
+            <img src="./static/images/densification.png" alt="overview" width="12000" height="600">
+            <p>
+              (a) Gaussian primitives distribution
+              (b) Ground truth scene surface and Gaussian primitives distribution
+              (c) The red Gaussian points represent new Gaussians generated by the SDF-guided Global Densification strategy, 
+              while the green Gaussian points indicate those adjusted through the SDF-guided Densification and Pruning process.
+            </p>
+        </div>
+      </div>
+    </div>
+    <!--/ densification. -->
+    
+  </div>
+</section>
+
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- <h2 class="title is-3">Comparison</h2> -->
+
+    <!-- ReconstructionComparison video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Reconstruction Comparison</h2>
+        <div class="publication-video">
+          <video id="teaser" autoplay muted loop playsinline height="100%">
+            <!-- <source src="./static/videos/ReconstructionComparisons_720p.mp4" type="video/mp4"> -->
+            <source src="./static/videos/reconstruction_comparisons/0085.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <!--/ ReconstructionComparison video. -->
+
+  
+    <!-- RenderingComparison video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Rendering Comparison</h2>
+        <div class="publication-video">
+          <!-- <iframe src="https://www.bilibili.com/bangumi/play/ep199612/?share_source=copy_web"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+          <!-- <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+          <video id="teaser" autoplay muted loop playsinline height="100%">
+            <!-- <source src="./static/videos/RenderingComparisons_720p.mp4"type="video/mp4"> -->
+            <source src="./static/videos/RenderinigComparison_slow/0721_new.mp4"type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <!--/ RenderingComparison video. -->
+
+        <!-- Interpolating. -->
+        <!-- <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/> -->
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <!-- <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+
+
+  </div>
+</section>
+
+
+<section class="hero is-light is-small is-centered has-text-centered">
+  <h2 class="title is-3">More Reconstruction Comparisons</h2>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0050.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0085.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0580.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0616.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/0721.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/8b5caf3398.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/8d563fc2cc.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!-- <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <h2 class="title is-3">More Rendering Comparisons</h2>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/RenderinigComparison_slow/0050_slow.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/RenderinigComparison_slow/0085_slow.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/RenderinigComparison_slow/0580_slow.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/RenderinigComparison_slow/0616_slow.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/RenderinigComparison_slow/0603_slow.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/RenderinigComparison_slow/0721_slow.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!-- <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- Concurrent Work. -->
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Acknowledgment</h2>
+
+            <div class="content has-text-justified">
+
+              <p>
+                We thank <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/">3DGS</a>, 
+                <a href="https://kcheng1021.github.io/gaussianpro.github.io/">GaussianPro</a>, 
+                <!-- and <a href="https://jiepengwang.github.io/NeuRIS/">NeuRIS</a> -->
+                and <a href="https://lingjie0206.github.io/papers/NeuS/">NeuS</a>
+                
+                for our code references.
+              </p>
+
+              <!-- <p>
+                <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+              </p>
+              <p>
+                <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+                both use deformation fields to model non-rigid scenes.
+              </p>
+              <p>
+                Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+              </p>
+              <p>
+                There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+              </p> -->
+            </div>
+          </div>
+        </div>
+        <!--/ Concurrent Work. -->
+    </div>
+  </div>
+</div>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <!-- <h2 class="title">BibTeX</h2> -->
+    <h2 class="title is-3">BibTeX</h2>
+    <p>
+      If you find this project useful in your research, please consider cite:
+    </p>
+    <pre><code>@article{xiang2024gaussianroom,
+      title={GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction},
+      author={Xiang, Haodong and Li, Xinghui and Lai, Xiansong and Zhang, Wanting and Liao, Zhichao and Cheng, Kai and Liu, Xueping},
+      journal={arXiv preprint arXiv:2405.19671},
+      year={2024}
+}</code></pre>
+  </div>
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{xxx,
+  author    = {xxx},
+  title     = {GaussianRoom},
+  journal   = {xxxx},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section> -->
+
+<!-- <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2405.19671">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/xhd0612/GaussianRoom" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="large-text">
+            We are very grateful to the authors of <a href="https://nerfies.github.io/">Nerfies</a> for open-sourcing the template for this website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
