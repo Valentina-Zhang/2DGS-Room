@@ -156,41 +156,22 @@
           <h1 class="title is-1 publication-title">GaussianRoom: Improving 3D Gaussian Splatting with SDF Guidance and Monocular Cues for Indoor Scene Reconstruction</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://github.com/xhd0612">Haodong Xiang*</a><sup>1</sup>,</span>
-              <!-- Haodong Xiang*<sup>1</sup>,</span> -->
+              <a href="https://Valentina-Zhang.github.io/">Wanting Zhang</a>,</span>
             <span class="author-block">
-              <!-- <a href="xxx.com">Xinghui Li*</a><sup>1</sup>,</span> -->
-              Xinghui Li*<sup>1</sup>,</span>
+              <a href="https://github.com/xhd0612">Haodong Xiang</a>,</span>
             <span class="author-block">
-              <a href="https://cklibra.github.io/">Kai Cheng*</a><sup>2</sup>,</span>
+              Zhichao Liao,</span>
             <span class="author-block">
-              <!-- <a href="xxx.com">Xiansong Lai</a><sup>1</sup>, -->
-              Xiansong Lai<sup>1</sup>,
+              Xiansong Lai,</span>
+            <span class="author-block">
+              Xinghui Li<sup>1✉</sup></span>
+            <span class="author-block">
+              <a href="https://www.sigs.tsinghua.edu.cn/cl/main.htm">Long Zeng</a><sup>1✉</sup> 
             </span>
-            <span class="author-block">
-              <!-- <a href="xxx.com">Wanting Zhang</a><sup>1</sup>, -->
-              Wanting Zhang<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <!-- <a href="xxx.com">Zhichao Liao</a><sup>1</sup>, -->
-              Zhichao Liao<sup>1</sup>,
-            </span>
-            <!-- <span class="author-block">
-              <a href="https://cklibra.github.io/">Kai Cheng</a><sup>2✉</sup>,
-            </span> -->
-            <span class="author-block">
-              Long Zeng<sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.sigs.tsinghua.edu.cn/lxp/main.htm">Xueping Liu</a><sup>1✉</sup> 
-              <!-- Xueping Liu<sup>1✉</sup>  -->
-            </span>
-            <p>(* Equal Contribution)</p>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>	Tsinghua University,</span>
-            <span class="author-block"><sup>2</sup>University of Science and Technology of China</span>
+            <span class="author-block">Tsinghua University</span>
           </div>
 
           <div class="column has-text-centered">
@@ -276,11 +257,10 @@
     <video class="video active" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/0050.mp4" type="video/mp4">
     </video>
-    <!-- 第二个视频 -->
-    <video class="video" autoplay controls muted loop playsinline height="100%">
+    
+    <!-- <video class="video" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/0085.mp4" type="video/mp4">
     </video>
-    <!-- 第三个视频 -->
     <video class="video" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/0580.mp4" type="video/mp4">
     </video>
@@ -295,7 +275,7 @@
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/8d563fc2cc.mp4" type="video/mp4">
-    </video>
+    </video> -->
     <!-- 在此添加更多视频 -->
 
     <!-- 控制按钮 -->
@@ -309,12 +289,12 @@
 <!-- 导航点 -->
 <div class="nav-dots">
   <span class="dot" onclick="switchVideo(0)"></span>
-  <span class="dot" onclick="switchVideo(1)"></span>
+  <!-- <span class="dot" onclick="switchVideo(1)"></span>
   <span class="dot" onclick="switchVideo(2)"></span>
   <span class="dot" onclick="switchVideo(3)"></span>
   <span class="dot" onclick="switchVideo(4)"></span>
   <span class="dot" onclick="switchVideo(5)"></span>
-  <span class="dot" onclick="switchVideo(6)"></span>
+  <span class="dot" onclick="switchVideo(6)"></span> -->
   <!-- 添加更多导航点 -->
 </div>
 
@@ -426,16 +406,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Recently, 3D Gaussian Splatting(3DGS) has revolutionized neural rendering with its high-quality rendering and real-time speed. 
-            However,  when it comes to indoor scenes with a significant number of textureless areas, 
-            3DGS yields incomplete and noisy reconstruction results due to the poor initialization of the point cloud and under-constrained optimization. 
-            Inspired by the continuity of signed distance field (SDF), which naturally has advantages in modeling surfaces, 
-            we present a unified optimizing framework integrating neural SDF with 3DGS.
-            This framework incorporates a learnable neural SDF field to guide the densification and pruning of Gaussians, 
-            enabling Gaussians to accurately model scenes even with poor initialized point clouds. 
-            At the same time, the geometry represented by Gaussians improves the efficiency of the SDF field by piloting its point sampling. 
-            Additionally, we regularize the optimization with normal and edge priors to eliminate geometry ambiguity in textureless areas and improve the details. 
-            Extensive experiments in ScanNet and ScanNet++ show that our method achieves state-of-the-art performance in both surface reconstruction and novel view synthesis.
+            The reconstruction of indoor scenes remains challenging due to the inherent complexity of spatial structures and the prevalence of textureless regions. 
+            Recent advancements in 3D Gaussian Splatting have improved novel view synthesis with accelerated processing but have yet to deliver comparable performance in surface reconstruction. 
+            In this paper, we introduce \textbf{2DGS-Room}, a novel method leveraging 2D Gaussian Splatting for high-fidelity indoor scene reconstruction. 
+            Specifically, we employ a seed-guided mechanism to control the distribution of 2D Gaussians, with the density of seed points dynamically optimized through adaptive growth and pruning mechanisms. 
+            To further improve geometric accuracy, we incorporate monocular depth and normal priors to provide constraints for details and textureless regions respectively. 
+            Additionally, multi-view consistency constraints are employed to mitigate artifacts and further enhance reconstruction quality. 
+            Extensive experiments on ScanNet and ScanNet++ datasets demonstrate that our method achieves state-of-the-art performance in indoor scene reconstruction.
           </p>
         </div>
       </div>
@@ -450,10 +427,11 @@
           <!-- <iframe src="./static/images/overview.pdf" width="600" height="400"></iframe> -->
             <img src="./static/images/overview.png" alt="overview" width="12000" height="600">
             <p>
-              GaussianRoom integrates neural SDF within 3DGS and forms a positive cycle improving each other. 
-              (a) We employ the geometric information from the SDF to constrain the Gaussian primitives, ensuring their spatial distribution aligns with the scene surface.
-              (b) We utilize rasterized depth from Gaussian to efficiently provide coarse geometry information, narrowing down the sampling range to accelerate the optimization of neural SDF.
-              (c) We introduce monocular normal prior and edge prior, addressing the challenges of texture-less areas and fine structures indoors.
+              Given multi-view posed images, we improve 2DGS to achieve high-fidelity geometric reconstruction for indoor scenes. 
+              (a) Starting from an SfM-derived point cloud, we generate a set of seed points through voxelization, establishing a stable foundation for guiding the distribution and density of 2D Gaussians. 
+              We further introduce an adaptive growth and pruning strategy to optimize seed points. 
+              (b) We incorporate depth and normal priors, addressing the challenges of detailed areas and textureless regions. 
+              (c) We introduce multi-view consistency constraints to further enhance the quality of the indoor scene reconstruction.
             </p>
         </div>
       </div>
@@ -480,9 +458,6 @@
     
   </div>
 </section>
-
-
-
 
 
 
@@ -588,7 +563,7 @@
                     type="video/mp4">
           </video>
         </div>
-        <div class="item item-chair-tp">
+        <!-- <div class="item item-chair-tp">
           <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/reconstruction_comparisons/0085.mp4"
                     type="video/mp4">
@@ -623,7 +598,8 @@
             <source src="./static/videos/reconstruction_comparisons/8d563fc2cc.mp4"
                     type="video/mp4">
           </video>
-        </div>
+        </div> -->
+
         <!-- <div class="item item-toby">
           <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/toby2.mp4"
@@ -650,11 +626,8 @@
             <div class="content has-text-justified">
 
               <p>
-                We thank <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/">3DGS</a>, 
-                <a href="https://kcheng1021.github.io/gaussianpro.github.io/">GaussianPro</a>, 
-                <!-- and <a href="https://jiepengwang.github.io/NeuRIS/">NeuRIS</a> -->
-                and <a href="https://lingjie0206.github.io/papers/NeuS/">NeuS</a>
-                
+                We thank <a href="https://github.com/hbb1/2d-gaussian-splatting">2DGS</a>, 
+                <!-- and <a href="https://lingjie0206.github.io/papers/NeuS/">NeuS</a> -->
                 for our code references.
               </p>
 
