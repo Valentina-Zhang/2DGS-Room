@@ -48,27 +48,6 @@
 <style>
   /* CSS 样式 */
 
-  .carousel {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
-
-  .carousel .item {
-    flex: 0 0 auto;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-    opacity: 0.5;  /* 默认不透明度 */
-  }
-
-  .carousel .item.active {
-    opacity: 1; /* 当前活跃视频完全显示 */
-    transform: scale(1.1); /* 中间的视频放大 */
-  }
-
-  .carousel .item.next, .carousel .item.prev {
-    opacity: 0.5; /* 下一张/上一张视频的透明度较低 */
-    transform: scale(0.9); /* 下一张/上一张视频缩小 */
-  }
-
   .video-container {
     display: flex;
     justify-content: center;
@@ -80,6 +59,7 @@
     overflow: hidden;
     max-width: 1080px; /* 设置最大宽度，防止视频过大超出屏幕 */
   }
+
   .video {
     width: 100%;
     height: auto;
@@ -124,6 +104,69 @@
   .active-dot {
     background-color: #fff;
   }
+
+  .carousel-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .carousel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  .carousel-item {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0.5;  /* 默认透明度 */
+  }
+
+  .carousel-item.active {
+    opacity: 1;  /* 当前视频显示 */
+    transform: scale(1.1); /* 当前视频放大 */
+  }
+
+  .carousel-item.prev, .carousel-item.next {
+    opacity: 0.5; /* 上一张/下一张视频的透明度较低 */
+    transform: scale(0.9); /* 上一张/下一张视频缩小 */
+  }
+
+  .carousel-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .carousel-dot {
+    flex: 1;
+    height: 15px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel-dot.active {
+    background-color: #333;
+  }
+
 
 </style>
 
@@ -257,14 +300,92 @@
       </div>
     </div>
     <!--/ Overview. -->
-
-    
-    
   </div>
 </section>
 
-
 <section class="hero is-light is-small is-centered has-text-centered">
+  <h2 class="title is-3">Reconstruction Results</h2>
+  <div class="hero-body">
+    <div class="carousel-container">
+      <div id="results-carousel" class="carousel">
+        <div class="carousel-item item-gs-0050">
+          <video poster="" id="gs-0050" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item item-gs-0085">
+          <video poster="" id="gs-0085" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/reconstruction_results/gs-0085.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item item-gs-0580">
+          <video poster="" id="gs-0580" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/reconstruction_results/gs-0580.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item item-gs-0616">
+          <video poster="" id="gs-0616" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/reconstruction_results/gs-0616.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item item-gs-8b">
+          <video poster="" id="gs-8b" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/reconstruction_results/gs-8b.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item item-gs-8d">
+          <video poster="" id="gs-8d" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- Navigation Dots -->
+      <div class="carousel-nav">
+        <div class="carousel-dot" data-index="0"></div>
+        <div class="carousel-dot" data-index="1"></div>
+        <div class="carousel-dot" data-index="2"></div>
+        <div class="carousel-dot" data-index="3"></div>
+        <div class="carousel-dot" data-index="4"></div>
+        <div class="carousel-dot" data-index="5"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function () {
+    let currentIndex = 0;
+    const items = $('.carousel .carousel-item');
+    const dots = $('.carousel-dot');
+    const totalItems = items.length;
+
+    function updateCarousel(index) {
+      // 清除所有视频的样式
+      items.removeClass('active prev next');
+      dots.removeClass('active');
+
+      // 当前项设置为 active
+      items.eq(index).addClass('active');
+      dots.eq(index).addClass('active');
+
+      // 上一项和下一项设置为 prev 和 next
+      items.eq((index - 1 + totalItems) % totalItems).addClass('prev');
+      items.eq((index + 1) % totalItems).addClass('next');
+    }
+
+    // 点击导航点切换视频
+    dots.click(function () {
+      currentIndex = $(this).data('index');
+      updateCarousel(currentIndex);
+    });
+
+    // 初始化
+    updateCarousel(currentIndex);
+  });
+</script>
+
+<!-- <section class="hero is-light is-small is-centered has-text-centered">
   <h2 class="title is-3">Reconstruction Results</h2>
   <div class="hero-body">
     <div class="video-container">
@@ -308,29 +429,8 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
-<script>
-  $(document).ready(function () {
-    let currentIndex = 0;
-    const videos = $('.carousel .item');
-    const totalVideos = videos.length;
-
-    function updateCarousel() {
-      videos.removeClass('active next prev');
-      videos.eq(currentIndex).addClass('active');
-      videos.eq((currentIndex + 1) % totalVideos).addClass('next');
-      videos.eq((currentIndex - 1 + totalVideos) % totalVideos).addClass('prev');
-    }
-
-    setInterval(function () {
-      currentIndex = (currentIndex + 1) % totalVideos;
-      updateCarousel();
-    }, 5000);
-
-    updateCarousel();
-  });
-</script>
 
 
 <section class="hero is-light is-small is-centered has-text-centered">
