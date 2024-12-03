@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Seed-Guided 2D Gaussian Splatting with Geometric Constrains for High-Fidelity Indoor Scene Reconstruction.">
-  <meta name="keywords" content="2DGS, Gaussian Splatting, 3D Reconstruction">
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>2DGS-Room: Seed-Guided 2D Gaussian Splatting with Geometric Constrains for High-Fidelity Indoor Scene Reconstruction</title>
 
@@ -114,6 +114,36 @@
       <span aria-hidden="true"></span>
     </a>
   </div>
+  <!-- <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
 </nav>
 
 
@@ -134,6 +164,7 @@
             <span class="author-block">
               Xiansong Lai,</span>
           </div>
+          
           <span class="author-block">
             Xinghui Li,<sup>✉</sup></span>
           <span class="author-block">
@@ -165,7 +196,26 @@
                   <span>arXiv</span>
                 </a>
               </span>
-
+              
+              <!-- <span class="link-block">
+                <a href="https://github.com/xhd0612/GaussianRoom"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
             </div>
 
           </div>
@@ -177,45 +227,44 @@
 
 <!-- reconstruction_results -->
 
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
         <source src="./static/videos/ReconstructionResults_720p.mp4"
                 type="video/mp4">
-      </video> -->
-      <img src="./static/images/teaser.png" alt="teaser" width="12000">
-      <!-- <h2 class="subtitle has-text-centered">
+      </video>
+
+      <h2 class="subtitle has-text-centered">
         GaussianRoom Reconstruction results.
-      </h2> -->
+      </h2>
 
     </div>
   </div>
-</section>
-
+</section> -->
 
 <div class="columns is-centered has-text-centered">
   <div class="video-container">
-    <h2 class="title is-3">Reconstruction Comparisons</h2>
-
+    <!-- 第一个视频 -->
     <video class="video active" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-0050.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
+    </video>
+    <!-- <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0085.mp4" type="video/mp4">
+    </video> -->
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0580.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-0085.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-0616.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-0580.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-8b.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-0616.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
     </video>
-    <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-8b.mp4" type="video/mp4">
-    </video>
-    <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-8d.mp4" type="video/mp4">
-    </video>
+    <!-- 在此添加更多视频 -->
 
     <!-- 控制按钮 -->
     <div class="controls">
@@ -232,8 +281,53 @@
   <span class="dot" onclick="switchVideo(2)"></span>
   <span class="dot" onclick="switchVideo(3)"></span>
   <span class="dot" onclick="switchVideo(4)"></span>
-  <span class="dot" onclick="switchVideo(5)"></span>
+  <!-- <span class="dot" onclick="switchVideo(5)"></span> -->
+  <!-- <span class="dot" onclick="switchVideo(6)"></span> -->
+  <!-- 添加更多导航点 -->
 </div>
+
+<!-- JavaScript 代码 -->
+<script>
+  // 获取所有视频元素
+  const videos = document.querySelectorAll(".video");
+  // 获取所有导航点元素
+  const dots = document.querySelectorAll(".dot");
+  // 当前活动视频的索引
+  let currentIndex = 0;
+
+  // 切换到指定索引视频的函数
+  function switchVideo(index) {
+    currentIndex = index;
+    // 隐藏所有视频
+    videos.forEach(video => video.classList.remove("active"));
+    // 显示指定索引的视频
+    videos[index].classList.add("active");
+    // 更新导航点状态
+    updateDots();
+  }
+
+  // 切换到上一个视频的函数
+  function prevVideo() {
+    currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 切换到下一个视频的函数
+  function nextVideo() {
+    currentIndex = (currentIndex + 1) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 更新导航点状态的函数
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active-dot"));
+    dots[currentIndex].classList.add("active-dot");
+  }
+
+  // 初始化时更新导航点状态
+  updateDots();
+</script>
+
 
 
 
@@ -304,8 +398,8 @@
 
 
 <div class="columns is-centered has-text-centered">
+  <h2 class="title is-3">Reconstruction Comparisons</h2>
   <div class="video-container">
-    <h2 class="title is-3">Reconstruction Comparisons</h2>
     <!-- 第一个视频 -->
     <video class="video active" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/all-0050.mp4" type="video/mp4">
@@ -327,7 +421,11 @@
     </video>
     <!-- 在此添加更多视频 -->
 
-
+    <!-- 控制按钮 -->
+    <div class="controls">
+      <button class="control-button prev" onclick="prevVideo()">❮</button>
+      <button class="control-button next" onclick="nextVideo()">❯</button>
+    </div>
   </div>
 </div>
 
