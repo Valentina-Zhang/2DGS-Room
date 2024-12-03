@@ -164,7 +164,7 @@
             <span class="author-block">
               Xiansong Lai,</span>
 
-              
+
             <span class="author-block">
               Xinghui Li<sup>✉</sup></span>
             <span class="author-block">
@@ -248,27 +248,23 @@
   <div class="video-container">
     <!-- 第一个视频 -->
     <video class="video active" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/0050.mp4" type="video/mp4">
-    </video>
-    
-    <!-- <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/0085.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/all-0050.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/0580.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/all-0085.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/0616.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/all-0580.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/0721.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/all-0616.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/8b5caf3398.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/all-8b.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/8d563fc2cc.mp4" type="video/mp4">
-    </video> -->
+      <source src="./static/videos/reconstruction_results/all-8d.mp4" type="video/mp4">
+    </video>
     <!-- 在此添加更多视频 -->
 
     <!-- 控制按钮 -->
@@ -282,12 +278,12 @@
 <!-- 导航点 -->
 <div class="nav-dots">
   <span class="dot" onclick="switchVideo(0)"></span>
-  <!-- <span class="dot" onclick="switchVideo(1)"></span>
+  <span class="dot" onclick="switchVideo(1)"></span>
   <span class="dot" onclick="switchVideo(2)"></span>
   <span class="dot" onclick="switchVideo(3)"></span>
   <span class="dot" onclick="switchVideo(4)"></span>
   <span class="dot" onclick="switchVideo(5)"></span>
-  <span class="dot" onclick="switchVideo(6)"></span> -->
+  <!-- <span class="dot" onclick="switchVideo(6)"></span> -->
   <!-- 添加更多导航点 -->
 </div>
 
@@ -333,62 +329,7 @@
   updateDots();
 </script>
 
-<!-- <section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
+
 
 
 <section class="section">
@@ -420,7 +361,7 @@
           <!-- <iframe src="./static/images/overview.pdf" width="600" height="400"></iframe> -->
             <img src="./static/images/overview.png" alt="overview" width="12000" height="600">
             <p>
-              Given multi-view posed images, we improve 2DGS to achieve high-fidelity geometric reconstruction for indoor scenes. 
+              2DGS-Room improves 2DGS to achieve high-fidelity geometric reconstruction for indoor scenes. 
               (a) Starting from an SfM-derived point cloud, we generate a set of seed points through voxelization, establishing a stable foundation for guiding the distribution and density of 2D Gaussians. 
               We further introduce an adaptive growth and pruning strategy to optimize seed points. 
               (b) We incorporate depth and normal priors, addressing the challenges of detailed areas and textureless regions. 
@@ -513,26 +454,7 @@
         <br/> -->
         <!--/ Interpolating. -->
 
-        <!-- Re-rendering. -->
-        <!-- <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div> -->
-        <!--/ Re-rendering. -->
+       
 
       </div>
     </div>
@@ -552,46 +474,40 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-steve">
           <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/0050.mp4"
+            <source src="./static/videos/reconstruction_comparisons/gs-0050.mp4"
                     type="video/mp4">
           </video>
         </div>
-        <!-- <div class="item item-chair-tp">
+        <div class="item item-chair-tp">
           <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/0085.mp4"
+            <source src="./static/videos/reconstruction_comparisons/gs-0085.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-shiba">
           <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/0580.mp4"
+            <source src="./static/videos/reconstruction_comparisons/gs-0580.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-fullbody">
           <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/0616.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/0721.mp4"
+            <source src="./static/videos/reconstruction_comparisons/gs-0616.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-mask">
           <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/8b5caf3398.mp4"
+            <source src="./static/videos/reconstruction_comparisons/gs-8b.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-coffee">
           <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/8d563fc2cc.mp4"
+            <source src="./static/videos/reconstruction_comparisons/gs-8d.mp4"
                     type="video/mp4">
           </video>
-        </div> -->
+        </div>
 
         <!-- <div class="item item-toby">
           <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
