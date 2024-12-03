@@ -337,6 +337,46 @@
   <!-- 添加更多导航点 -->
 </div>
 
+<script>
+  // 获取所有视频元素
+  const videos = document.querySelectorAll(".video");
+  // 获取所有导航点元素
+  const dots = document.querySelectorAll(".dot");
+  // 当前活动视频的索引
+  let currentIndex = 0;
+
+  // 切换到指定索引视频的函数
+  function switchVideo(index) {
+    currentIndex = index;
+    // 隐藏所有视频
+    videos.forEach(video => video.classList.remove("active"));
+    // 显示指定索引的视频
+    videos[index].classList.add("active");
+    // 更新导航点状态
+    updateDots();
+  }
+
+  // 切换到上一个视频的函数
+  function prevVideo() {
+    currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 切换到下一个视频的函数
+  function nextVideo() {
+    currentIndex = (currentIndex + 1) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 更新导航点状态的函数
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active-dot"));
+    dots[currentIndex].classList.add("active-dot");
+  }
+
+  // 初始化时更新导航点状态
+  updateDots();
+</script>
 
 <!-- <section class="hero is-light is-small is-centered has-text-centered">
   <h2 class="title is-3">More Reconstruction Comparisons</h2>
