@@ -146,22 +146,102 @@
 
 <!-- reconstruction_results -->
 
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/ReconstructionResults_720p.mp4"
-                type="video/mp4">
-      </video> -->
       <img src="./static/images/teaser.png" alt="teaser" width="12000">
-      <!-- <h2 class="subtitle has-text-centered">
-        GaussianRoom Reconstruction results.
-      </h2> -->
-
     </div>
   </div>
-</section>
+</section> -->
 
+
+
+<div class="columns is-centered has-text-centered">
+  <div class="video-container">
+    <!-- 第一个视频 -->
+    <video class="video active" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
+    </video>
+    <!-- 第二个视频 -->
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0085.mp4" type="video/mp4">
+    </video>
+    <!-- 第三个视频 -->
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0580.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0616.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-8b.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
+    </video>
+    <!-- 在此添加更多视频 -->
+
+    <!-- 控制按钮 -->
+    <div class="controls">
+      <button class="control-button prev" onclick="prevVideo()">❮</button>
+      <button class="control-button next" onclick="nextVideo()">❯</button>
+    </div>
+  </div>
+</div>
+
+<!-- 导航点 -->
+<div class="nav-dots">
+  <span class="dot" onclick="switchVideo(0)"></span>
+  <span class="dot" onclick="switchVideo(1)"></span>
+  <span class="dot" onclick="switchVideo(2)"></span>
+  <span class="dot" onclick="switchVideo(3)"></span>
+  <span class="dot" onclick="switchVideo(4)"></span>
+  <span class="dot" onclick="switchVideo(5)"></span>
+  <span class="dot" onclick="switchVideo(6)"></span>
+  <!-- 添加更多导航点 -->
+</div>
+
+<!-- JavaScript 代码 -->
+<script>
+  // 获取所有视频元素
+  const videos = document.querySelectorAll(".video");
+  // 获取所有导航点元素
+  const dots = document.querySelectorAll(".dot");
+  // 当前活动视频的索引
+  let currentIndex = 0;
+
+  // 切换到指定索引视频的函数
+  function switchVideo(index) {
+    currentIndex = index;
+    // 隐藏所有视频
+    videos.forEach(video => video.classList.remove("active"));
+    // 显示指定索引的视频
+    videos[index].classList.add("active");
+    // 更新导航点状态
+    updateDots();
+  }
+
+  // 切换到上一个视频的函数
+  function prevVideo() {
+    currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 切换到下一个视频的函数
+  function nextVideo() {
+    currentIndex = (currentIndex + 1) % videos.length;
+    switchVideo(currentIndex);
+  }
+
+  // 更新导航点状态的函数
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active-dot"));
+    dots[currentIndex].classList.add("active-dot");
+  }
+
+  // 初始化时更新导航点状态
+  updateDots();
+</script>
 
 
 <section class="section">
