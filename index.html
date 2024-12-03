@@ -47,14 +47,27 @@
 <title>Video Carousel</title>
 <style>
   /* CSS 样式 */
-  
-  
-  /* 设置视频的基础样式 */
   .video-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh; /* 让视频容器铺满整个视口高度 */
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    max-width: 1080px; /* 设置最大宽度，防止视频过大超出屏幕 */
   }
+  .video {
+    width: 100%;
+    height: auto;
+    display: none; /* 初始隐藏所有视频 */
+    max-width: auto; /* 视频最大宽度为网页宽度 */
+  }
+  .active {
+    display: block; /* 显示当前活动的视频 */
+  }
+
 
   .carousel {
     display: flex;
