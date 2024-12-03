@@ -165,13 +165,11 @@
               Xiansong Lai,</span>
           </div>
           
-          <div class="is-size-5 publication-authors">
           <span class="author-block">
             Xinghui Li,<sup>✉</sup></span>
           <span class="author-block">
             <a href="https://www.sigs.tsinghua.edu.cn/cl/main.htm">Long Zeng</a><sup>✉</sup> 
           </span>
-          </div>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">Tsinghua University</span>
@@ -424,39 +422,50 @@
 </section>
 
 
-<section class="section">
-  <div class="columns is-centered has-text-centered">
-    <div class="video-container">
-      <h2 class="title is-3">Reconstruction Comparison</h2>
-      <!-- 第一个视频 -->
-      <video class="video active" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-0085.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-0580.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-0616.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-8b.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
-      </video>
-      <!-- 在此添加更多视频 -->
 
-      <!-- 控制按钮 -->
-      <div class="controls">
-        <button class="control-button prev" onclick="prevVideo()">❮</button>
-        <button class="control-button next" onclick="nextVideo()">❯</button>
-      </div>
+<div class="columns is-centered has-text-centered">
+  <div class="video-container">
+    <h2 class="title is-3">Reconstruction Comparisons</h2>
+    <!-- 第一个视频 -->
+    <video class="video active" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0085.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0580.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-0616.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-8b.mp4" type="video/mp4">
+    </video>
+    <video class="video" autoplay controls muted loop playsinline height="100%">
+      <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
+    </video>
+    <!-- 在此添加更多视频 -->
+
+    <!-- 控制按钮 -->
+    <div class="controls">
+      <button class="control-button prev" onclick="prevVideo()">❮</button>
+      <button class="control-button next" onclick="nextVideo()">❯</button>
     </div>
   </div>
-</section>
+</div>
+
+<!-- 导航点 -->
+<div class="nav-dots">
+  <span class="dot" onclick="switchVideo(0)"></span>
+  <span class="dot" onclick="switchVideo(1)"></span>
+  <span class="dot" onclick="switchVideo(2)"></span>
+  <span class="dot" onclick="switchVideo(3)"></span>
+  <span class="dot" onclick="switchVideo(4)"></span>
+  <!-- <span class="dot" onclick="switchVideo(5)"></span> -->
+  <!-- <span class="dot" onclick="switchVideo(6)"></span> -->
+  <!-- 添加更多导航点 -->
+</div>
 
 
 <!-- <section class="hero is-light is-small is-centered has-text-centered">
