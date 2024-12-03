@@ -282,3 +282,10 @@ body {
 .active-dot {
   background-color: #717171;
 }
+
+.wide-image {
+  width: 140%; /* 设置宽度为120%，使其比容器宽 */
+  max-width: none; /* 确保宽度不会被限制 */
+  height: auto; /* 保持图片的纵横比 */
+  margin-left: -20%; /* 负的左外边距，使图片居中 */
+}
