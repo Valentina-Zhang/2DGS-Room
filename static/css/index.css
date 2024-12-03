@@ -284,7 +284,7 @@ body {
 }
 
 .wide-image {
-  width: 100%; /* 设置宽度为120%，使其比容器宽 */
+  width: 80%; /* 设置宽度为120%，使其比容器宽 */
   max-width: none; /* 确保宽度不会被限制 */
   height: auto; /* 保持图片的纵横比 */
   margin-left: -20%; /* 负的左外边距，使图片居中 */
