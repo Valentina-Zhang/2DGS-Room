@@ -256,43 +256,44 @@
 </section>
 
 
-<section class="hero is-light is-small">
+<section class="hero is-light is-small is-centered has-text-centered">
+  <h2 class="title is-3">Reconstruction Results</h2>
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-gs-0050">
           <video poster="" id="gs-0050" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_resultsgs-0050.mp4"
+            <source src="./static/videos/reconstruction_results/gs-0050.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-gs-0085">
           <video poster="" id="gs-0085" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_resultsgs-0085.mp4"
+            <source src="./static/videos/reconstruction_results/gs-0085.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-gs-0580">
           <video poster="" id="gs-0580" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_resultsgs-0580.mp4"
+            <source src="./static/videos/reconstruction_results/gs-0580.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-gs-0616">
           <video poster="" id="gs-0616" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_resultsgs-0616.mp4"
+            <source src="./static/videos/reconstruction_results/gs-0616.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-gs-8b">
           <video poster="" id="gs-8b" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_resultsgs-8b.mp4"
+            <source src="./static/videos/reconstruction_results/gs-8b.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-gs-8d">
           <video poster="" id="gs-8d" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_resultsgs-8d.mp4"
+            <source src="./static/videos/reconstruction_results/gs-8d.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -300,43 +301,46 @@
     </div>
   </div>
 </section>
-<section class="hero is-light is-small">
+
+
+<section class="hero is-light is-small is-centered has-text-centered">
+  <h2 class="title is-3">Reconstruction Comparisons</h2>
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-all-0050">
           <video poster="" id="all-0050" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisonsall-0050.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-0050.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-all-0085">
           <video poster="" id="all-0085" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisonsall-0085.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-0085.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-all-0580">
           <video poster="" id="all-0580" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisonsall-0580.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-0580.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-all-0616">
           <video poster="" id="all-0616" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisonsall-0616.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-0616.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-all-8b">
           <video poster="" id="all-8b" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisonsall-8b.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-8b.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-all-8d">
           <video poster="" id="all-8d" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisonsall-8d.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-8d.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -345,98 +349,6 @@
   </div>
 </section>
 
-
-<!-- <script>
-  let currentIndexReconstruction = 0;
-  let currentIndexComparisons = 0;
-
-  function switchVideo(carouselId, index) {
-    const carousel = document.querySelector(`#${carouselId}`);
-    const items = carousel.querySelectorAll('.carousel-item');
-    items.forEach(item => item.classList.remove('active'));
-    items[index].classList.add('active');
-  }
-
-  function nextVideo() {
-    const carousel = document.querySelector('#reconstruction-carousel');
-    const items = carousel.querySelectorAll('.carousel-item');
-    currentIndexReconstruction = (currentIndexReconstruction + 1) % items.length;
-    switchVideo('reconstruction-carousel', currentIndexReconstruction);
-  }
-
-  function prevVideo() {
-    const carousel = document.querySelector('#reconstruction-carousel');
-    const items = carousel.querySelectorAll('.carousel-item');
-    currentIndexReconstruction = (currentIndexReconstruction - 1 + items.length) % items.length;
-    switchVideo('reconstruction-carousel', currentIndexReconstruction);
-  }
-
-  function nextComparisonVideo() {
-    const carousel = document.querySelector('#comparisons-carousel');
-    const items = carousel.querySelectorAll('.carousel-item');
-    currentIndexComparisons = (currentIndexComparisons + 1) % items.length;
-    switchVideo('comparisons-carousel', currentIndexComparisons);
-  }
-
-  function prevComparisonVideo() {
-    const carousel = document.querySelector('#comparisons-carousel');
-    const items = carousel.querySelectorAll('.carousel-item');
-    currentIndexComparisons = (currentIndexComparisons - 1 + items.length) % items.length;
-    switchVideo('comparisons-carousel', currentIndexComparisons);
-  }
-</script>
- -->
-
-
-
-
-<!-- <section class="hero is-light is-small is-centered has-text-centered">
-  <h2 class="title is-3">More Reconstruction Comparisons</h2>
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/all-0050.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/all-0085.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/all-0580.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/all-0616.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/all-8b.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/all-8d.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</section> -->
 
 
 
