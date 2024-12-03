@@ -256,136 +256,148 @@
 </section>
 
 
-
-
 <section class="hero is-light is-small is-centered has-text-centered">
   <h2 class="title is-3">Reconstruction Results</h2>
-  <div class="columns is-centered has-text-centered">
-    <div class="video-container">
-      <video class="video active" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-0085.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-0580.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-0616.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-8b.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
-      </video>
+  <div class="hero-body">
+    <div class="container">
+      <div id="reconstruction-carousel" class="carousel carousel-animate">
+        <!-- 视频项 -->
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_results/gs-0085.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_results/gs-0580.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_results/gs-0616.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_results/gs-8b.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
 
       <!-- 控制按钮 -->
-      <div class="controls">
-        <button class="control-button prev" onclick="prevVideo()">❮</button>
-        <button class="control-button next" onclick="nextVideo()">❯</button>
+      <div class="carousel-controls">
+        <button class="button is-small prev" onclick="prevVideo()">❮</button>
+        <button class="button is-small next" onclick="nextVideo()">❯</button>
       </div>
     </div>
   </div>
 </section>
-
-
-<!-- 导航点 -->
-<div class="nav-dots">
-  <span class="dot" onclick="switchVideo(0)"></span>
-  <span class="dot" onclick="switchVideo(1)"></span>
-  <span class="dot" onclick="switchVideo(2)"></span>
-  <span class="dot" onclick="switchVideo(3)"></span>
-  <span class="dot" onclick="switchVideo(4)"></span>
-  <span class="dot" onclick="switchVideo(5)"></span>
-</div>
-
 
 <section class="hero is-light is-small is-centered has-text-centered">
   <h2 class="title is-3">Reconstruction Comparisons</h2>
-  <div class="columns is-centered has-text-centered">
-    <div class="video-container">
-      <!-- 第一个视频 -->
-      <video class="video active" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_comparisons/all-0050.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_comparisons/all-0085.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_comparisons/all-0580.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_comparisons/all-0616.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_comparisons/all-8b.mp4" type="video/mp4">
-      </video>
-      <video class="video" autoplay controls muted loop playsinline height="100%">
-        <source src="./static/videos/reconstruction_comparisons/all-8d.mp4" type="video/mp4">
-      </video>
+  <div class="hero-body">
+    <div class="container">
+      <div id="comparisons-carousel" class="carousel carousel-animate">
+        <!-- 视频项 -->
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/all-0050.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/all-0085.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/all-0580.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/all-0616.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/all-8b.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/reconstruction_comparisons/all-8d.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
 
       <!-- 控制按钮 -->
-      <div class="controls">
-        <button class="control-button prev" onclick="prevVideo()">❮</button>
-        <button class="control-button next" onclick="nextVideo()">❯</button>
+      <div class="carousel-controls">
+        <button class="button is-small prev" onclick="prevVideo()">❮</button>
+        <button class="button is-small next" onclick="nextVideo()">❯</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 导航点 -->
-<div class="nav-dots">
-  <span class="dot" onclick="switchVideo(0)"></span>
-  <span class="dot" onclick="switchVideo(1)"></span>
-  <span class="dot" onclick="switchVideo(2)"></span>
-  <span class="dot" onclick="switchVideo(3)"></span>
-  <span class="dot" onclick="switchVideo(4)"></span>
-  <span class="dot" onclick="switchVideo(5)"></span>
-  <!-- 添加更多导航点 -->
-</div>
-
 <script>
-  // 获取所有视频元素
-  const videos = document.querySelectorAll(".video");
-  // 获取所有导航点元素
-  const dots = document.querySelectorAll(".dot");
-  // 当前活动视频的索引
-  let currentIndex = 0;
+  let currentIndexReconstruction = 0;
+  let currentIndexComparisons = 0;
 
-  // 切换到指定索引视频的函数
-  function switchVideo(index) {
-    currentIndex = index;
-    // 隐藏所有视频
-    videos.forEach(video => video.classList.remove("active"));
-    // 显示指定索引的视频
-    videos[index].classList.add("active");
-    // 更新导航点状态
-    updateDots();
+  // Function to switch videos in reconstruction carousel
+  function switchVideo(carouselId, index) {
+    const carousel = document.querySelector(`#${carouselId}`);
+    const items = carousel.querySelectorAll('.carousel-item');
+    items.forEach(item => item.classList.remove('active'));
+    items[index].classList.add('active');
   }
 
-  // 切换到上一个视频的函数
-  function prevVideo() {
-    currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-    switchVideo(currentIndex);
-  }
-
-  // 切换到下一个视频的函数
+  // Next video function for reconstruction
   function nextVideo() {
-    currentIndex = (currentIndex + 1) % videos.length;
-    switchVideo(currentIndex);
+    const carousel = document.querySelector('#reconstruction-carousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    currentIndexReconstruction = (currentIndexReconstruction + 1) % items.length;
+    switchVideo('reconstruction-carousel', currentIndexReconstruction);
   }
 
-  // 更新导航点状态的函数
-  function updateDots() {
-    dots.forEach(dot => dot.classList.remove("active-dot"));
-    dots[currentIndex].classList.add("active-dot");
+  // Previous video function for reconstruction
+  function prevVideo() {
+    const carousel = document.querySelector('#reconstruction-carousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    currentIndexReconstruction = (currentIndexReconstruction - 1 + items.length) % items.length;
+    switchVideo('reconstruction-carousel', currentIndexReconstruction);
   }
 
-  // 初始化时更新导航点状态
-  updateDots();
+  // Next video function for comparisons
+  function nextComparisonVideo() {
+    const carousel = document.querySelector('#comparisons-carousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    currentIndexComparisons = (currentIndexComparisons + 1) % items.length;
+    switchVideo('comparisons-carousel', currentIndexComparisons);
+  }
+
+  // Previous video function for comparisons
+  function prevComparisonVideo() {
+    const carousel = document.querySelector('#comparisons-carousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    currentIndexComparisons = (currentIndexComparisons - 1 + items.length) % items.length;
+    switchVideo('comparisons-carousel', currentIndexComparisons);
+  }
 </script>
+
+
+
+
 
 <!-- <section class="hero is-light is-small is-centered has-text-centered">
   <h2 class="title is-3">More Reconstruction Comparisons</h2>
