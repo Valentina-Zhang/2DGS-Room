@@ -154,6 +154,26 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3" style="text-align: center;">Comparisons</h2>
+      <div class="content">
+        <h2 class="title is-4">ScanNet</h2>
+        <div class="button-container" id="btn1">
+          <button onclick="changeImages(event, 'cmp1','./static/videos/scene0050_00_2dgs.mp4', './static/videos/scene0050_00_ours.mp4')" class="cmp-button cmp-btn-checked">scene0050</button>
+          <button onclick="changeImages(event, 'cmp1','./static/videos/scene0050_00_2dgs.mp4', './static/videos/scene0050_00_ours.mp4')" class="cmp-button">scene0616</button>
+        </div>
+        <div class="cmp-container" id="cmp1">
+            <div class="bottom">
+                <img src="./static/videos/scene0085_00_2dgs.mp4"/>
+            </div>
+            <div class="top">
+                <img src="./static/videos/scene0085_00_ours.mp4"/>
+            </div>
+            <div class="cmp-slider"></div>
+        </div>
+      </div>
+</section>
 
 <section class="hero is-small is-centered has-text-centered">
   <!-- <h2 class="title is-3">Reconstruction Results</h2> -->
