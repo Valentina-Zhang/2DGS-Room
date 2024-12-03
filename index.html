@@ -47,26 +47,48 @@
 <title>Video Carousel</title>
 <style>
   /* CSS 样式 */
+  
+  
+  /* 设置视频的基础样式 */
   .video-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 让视频容器铺满整个视口高度 */
-    position: relative;
-    width: 100%;
-    height: auto;
+  }
+
+  .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
-    max-width: 1080px; /* 设置最大宽度，防止视频过大超出屏幕 */
   }
+
+  .item {
+    transition: transform 0.3s ease, transform 0.3s ease;
+  }
+
   .video {
-    width: 100%;
+    width: 80%; /* 视频默认宽度 */
     height: auto;
-    display: none; /* 初始隐藏所有视频 */
-    max-width: auto; /* 视频最大宽度为网页宽度 */
+    opacity: 0.6; /* 非活动视频稍微透明 */
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
-  .active {
-    display: block; /* 显示当前活动的视频 */
+
+  .video.active {
+    width: 100%; /* 当前活跃视频最大 */
+    opacity: 1; /* 活跃视频不透明 */
   }
+
+  /* 可以加上一些过渡效果 */
+  .carousel .item:not(.active) {
+    transform: scale(0.8); /* 非活动视频缩小 */
+  }
+
+  .carousel .item.active {
+    transform: scale(1); /* 活跃视频正常尺寸 */
+  }
+
+
   .controls {
     position: absolute;
     bottom: 10px;
@@ -287,7 +309,7 @@
 </section>
 
 
-<section class="hero is-light is-small is-centered has-text-centered">
+<!-- <section class="hero is-light is-small is-centered has-text-centered">
   <h2 class="title is-3">Reconstruction Comparisons</h2>
   <div class="hero-body">
     <div class="video-container">
@@ -331,7 +353,49 @@
       </div>
     </div>
   </div>
+</section> -->
+
+
+<section class="hero is-light is-small is-centered has-text-centered">
+  <h2 class="title is-3">Reconstruction Comparisons</h2>
+  <div class="hero-body">
+    <div class="video-container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-all-0050">
+          <video class="video active" id="all-0050" autoplay controls muted loop playsinline>
+            <source src="./static/videos/reconstruction_comparisons/all-0050.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-all-0085">
+          <video class="video" id="all-0085" autoplay controls muted loop playsinline>
+            <source src="./static/videos/reconstruction_comparisons/all-0085.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-all-0580">
+          <video class="video" id="all-0580" autoplay controls muted loop playsinline>
+            <source src="./static/videos/reconstruction_comparisons/all-0580.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-all-0616">
+          <video class="video" id="all-0616" autoplay controls muted loop playsinline>
+            <source src="./static/videos/reconstruction_comparisons/all-0616.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-all-8b">
+          <video class="video" id="all-8b" autoplay controls muted loop playsinline>
+            <source src="./static/videos/reconstruction_comparisons/all-8b.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-all-8d">
+          <video class="video" id="all-8d" autoplay controls muted loop playsinline>
+            <source src="./static/videos/reconstruction_comparisons/all-8d.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 
 <section class="section">
   <div class="container is-max-desktop">

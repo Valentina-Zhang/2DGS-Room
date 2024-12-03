@@ -208,7 +208,7 @@ body {
   background-color: #333;
 }
 
-/* 样式调整 */
+
 .video-container {
   position: relative;
   width: 100%;
@@ -218,11 +218,12 @@ body {
 
 .video {
   display: none;
-}
+} */
 
 .video.active {
   display: block;
 }
+
 
 .controls {
   position: absolute;
