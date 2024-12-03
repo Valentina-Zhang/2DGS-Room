@@ -249,22 +249,22 @@
   <div class="video-container">
     <!-- 第一个视频 -->
     <video class="video active" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-0050.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
     </video>
     <!-- <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-0085.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-0085.mp4" type="video/mp4">
     </video> -->
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-0580.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-0580.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-0616.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-0616.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-8b.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-8b.mp4" type="video/mp4">
     </video>
     <video class="video" autoplay controls muted loop playsinline height="100%">
-      <source src="./static/videos/reconstruction_results/all-8d.mp4" type="video/mp4">
+      <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
     </video>
     <!-- 在此添加更多视频 -->
 
@@ -411,116 +411,103 @@
         <div class="publication-video">
           <video id="teaser" autoplay muted loop playsinline height="100%">
             <!-- <source src="./static/videos/ReconstructionComparisons_720p.mp4" type="video/mp4"> -->
-            <source src="./static/videos/reconstruction_comparisons/all-0085.mp4" type="video/mp4">
+            <source src="./static/videos/reconstruction_comparisons/gs-0085.mp4" type="video/mp4">
           </video>
         </div>
       </div>
     </div>
     <!--/ ReconstructionComparison video. -->
-
-  
-    
-
-        <!-- Interpolating. -->
-        <!-- <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/> -->
-        <!--/ Interpolating. -->
-
-       
-
       </div>
     </div>
     <!--/ Animation. -->
-
-
-
-
   </div>
 </section>
 
 
-<section class="hero is-light is-small is-centered has-text-centered">
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="video-container">
+      <h2 class="title is-3">Reconstruction Comparison</h2>
+      <!-- 第一个视频 -->
+      <video class="video active" autoplay controls muted loop playsinline height="100%">
+        <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
+      </video>
+      <video class="video" autoplay controls muted loop playsinline height="100%">
+        <source src="./static/videos/reconstruction_results/gs-0085.mp4" type="video/mp4">
+      </video>
+      <video class="video" autoplay controls muted loop playsinline height="100%">
+        <source src="./static/videos/reconstruction_results/gs-0580.mp4" type="video/mp4">
+      </video>
+      <video class="video" autoplay controls muted loop playsinline height="100%">
+        <source src="./static/videos/reconstruction_results/gs-0616.mp4" type="video/mp4">
+      </video>
+      <video class="video" autoplay controls muted loop playsinline height="100%">
+        <source src="./static/videos/reconstruction_results/gs-8b.mp4" type="video/mp4">
+      </video>
+      <video class="video" autoplay controls muted loop playsinline height="100%">
+        <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
+      </video>
+      <!-- 在此添加更多视频 -->
+
+      <!-- 控制按钮 -->
+      <div class="controls">
+        <button class="control-button prev" onclick="prevVideo()">❮</button>
+        <button class="control-button next" onclick="nextVideo()">❯</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="hero is-light is-small is-centered has-text-centered">
   <h2 class="title is-3">More Reconstruction Comparisons</h2>
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-steve">
           <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/gs-0050.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-0050.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-chair-tp">
           <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/gs-0085.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-0085.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-shiba">
           <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/gs-0580.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-0580.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-fullbody">
           <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/gs-0616.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-0616.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-mask">
           <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/gs-8b.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-8b.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-coffee">
           <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/reconstruction_comparisons/gs-8d.mp4"
+            <source src="./static/videos/reconstruction_comparisons/all-8d.mp4"
                     type="video/mp4">
           </video>
         </div>
 
-        <!-- <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div> -->
       </div>
     </div>
   </div>
 
-</section>
+</section> -->
+
+
 
 <section class="section">
   <div class="container is-max-desktop">
