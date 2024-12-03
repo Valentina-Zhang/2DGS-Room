@@ -293,12 +293,6 @@
           </video>
         </div>
       </div>
-
-      <!-- 控制按钮 -->
-      <div class="carousel-controls">
-        <button class="button is-small prev" onclick="prevVideo()">❮</button>
-        <button class="button is-small next" onclick="nextVideo()">❯</button>
-      </div>
     </div>
   </div>
 </section>
@@ -340,21 +334,14 @@
           </video>
         </div>
       </div>
-
-      <!-- 控制按钮 -->
-      <div class="carousel-controls">
-        <button class="button is-small prev" onclick="prevVideo()">❮</button>
-        <button class="button is-small next" onclick="nextVideo()">❯</button>
-      </div>
     </div>
   </div>
 </section>
 
-<script>
+<!-- <script>
   let currentIndexReconstruction = 0;
   let currentIndexComparisons = 0;
 
-  // Function to switch videos in reconstruction carousel
   function switchVideo(carouselId, index) {
     const carousel = document.querySelector(`#${carouselId}`);
     const items = carousel.querySelectorAll('.carousel-item');
@@ -362,7 +349,6 @@
     items[index].classList.add('active');
   }
 
-  // Next video function for reconstruction
   function nextVideo() {
     const carousel = document.querySelector('#reconstruction-carousel');
     const items = carousel.querySelectorAll('.carousel-item');
@@ -370,7 +356,6 @@
     switchVideo('reconstruction-carousel', currentIndexReconstruction);
   }
 
-  // Previous video function for reconstruction
   function prevVideo() {
     const carousel = document.querySelector('#reconstruction-carousel');
     const items = carousel.querySelectorAll('.carousel-item');
@@ -378,7 +363,6 @@
     switchVideo('reconstruction-carousel', currentIndexReconstruction);
   }
 
-  // Next video function for comparisons
   function nextComparisonVideo() {
     const carousel = document.querySelector('#comparisons-carousel');
     const items = carousel.querySelectorAll('.carousel-item');
@@ -386,7 +370,6 @@
     switchVideo('comparisons-carousel', currentIndexComparisons);
   }
 
-  // Previous video function for comparisons
   function prevComparisonVideo() {
     const carousel = document.querySelector('#comparisons-carousel');
     const items = carousel.querySelectorAll('.carousel-item');
@@ -394,7 +377,7 @@
     switchVideo('comparisons-carousel', currentIndexComparisons);
   }
 </script>
-
+ -->
 
 
 
