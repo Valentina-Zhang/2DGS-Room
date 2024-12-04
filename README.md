@@ -6,7 +6,7 @@
   
 
 
-[Wanting Zhang](https://scholar.google.com/citations?user=V6mBA5IAAAAJ), [Haodong Xiang](https://github.com/Valentina-Zhang), [Zhichao Liao](https://scholar.google.com.hk/citations?user=4eRwbOEAAAAJ&hl=zh-CN), [Xiansong Lai], [Xinghui Li](https://github.com/Crayon-Shinchan)✉, [Long Zeng](https://www.sigs.tsinghua.edu.cn/cl/main.htm)✉ <br />
+[Wanting Zhang](https://scholar.google.com/citations?user=V6mBA5IAAAAJ), [Haodong Xiang](https://github.com/Valentina-Zhang), [Zhichao Liao](https://scholar.google.com.hk/citations?user=4eRwbOEAAAAJ&hl=zh-CN), [Xiansong Lai](https://scholar.google.com/citations?user=YB0QrZgAAAAJ&hl=en), [Xinghui Li](https://github.com/Crayon-Shinchan)✉, [Long Zeng](https://www.sigs.tsinghua.edu.cn/cl/main.htm)✉ <br />
 
 
 ### [[`Project Page`](https://Valentina-Zhang.github.io/2DGS-Room/)][[`arxiv`](https://arxiv.org/abs/2405.19671)][[`Paper`](https://arxiv.org/pdf/2405.19671)]
