@@ -229,6 +229,17 @@ body {
 	left: 0;
 }
 
+
+.preview {
+  width: 25%;  /* 缩小版视频占总宽度的25% */
+  opacity: 0.7;  /* 增加透明度，使其看起来像预览 */
+}
+
+.active {
+  width: 50%;  /* 当前视频占总宽度的50% */
+  opacity: 1;   /* 保证当前视频完全显示 */
+}
+
 .video.active {
   display: block;
   width: 100%;
