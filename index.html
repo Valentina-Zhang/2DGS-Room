@@ -63,7 +63,7 @@
   .video {
     width: 100%;
     height: auto;
-    display: none; /* 初始隐藏所有视频 */
+    display: block; /* 初始隐藏所有视频 */
     max-width: auto; /* 视频最大宽度为网页宽度 */
   }
   .active {
@@ -73,6 +73,59 @@
   .rounded-corners {
     border-radius: 10px; 
   }
+
+
+  .preview {
+    width: 25%;  /* 缩小版视频占总宽度的25% */
+    opacity: 0.7;  /* 增加透明度，使其看起来像预览 */
+  }
+
+  .active {
+    width: 50%;  /* 当前视频占总宽度的50% */
+    opacity: 1;   /* 保证当前视频完全显示 */
+  }
+
+  .controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+
+  .control-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .control-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  .nav-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+
+  .active-dot {
+    background-color: #333;
+  }
+
 
 </style>
 
@@ -156,7 +209,7 @@
     </div>
  
     <div class="hero-body">
-      <video class="video active" width="24000" id="teaser" loop playsinline autoplay muted src="./static/videos/scene0085_00.mp4" onplay="resizeAndPlay(this)"></video>
+      <video class="video" width="24000" id="teaser" loop playsinline autoplay muted src="./static/videos/scene0085_00.mp4" onplay="resizeAndPlay(this)"></video>
           <canvas height=0 class="videoMerge" id="teaserMerge"></canvas>
     </div>
 
