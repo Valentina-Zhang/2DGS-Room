@@ -25,19 +25,19 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/bulma.min.css"> -->
+  <!-- <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css"> -->
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> -->
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/indoor.ico">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script> -->
+  <!-- <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script> -->
   <script src="./static/js/index.js"></script>
   <script src="./static/js/video_comparison.js"></script>
 
@@ -79,7 +79,7 @@
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
@@ -87,7 +87,7 @@
       <span aria-hidden="true"></span>
     </a>
   </div>
-</nav>
+</nav> -->
 
 
 <!-- author -->
@@ -156,6 +156,12 @@
     </div>
   </div>
 
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+    <video class="video active" width="12000" id="teaser" loop playsinline autoplay muted src="./static/videos/scene0050_00.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+        <canvas height=0 class="videoMerge" id="teaserMerge"></canvas>
+    </div>
+  </div>
 
 <!-- <section class="section">
   <div class="container is-max-desktop">
@@ -178,11 +184,11 @@
       </div>
 </section> -->
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-8 col-md-offset-2">
       <video class="video active" width="100%" id="teaser" loop playsinline autoplay muted src="./static/videos/scene0050_00.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
       <canvas height=0 class="videoMerge" id="teaserMerge"></canvas>
-</div>
+</div> -->
 
 <!-- <div class="row">
   <div class="col-md-8 col-md-offset-2">
