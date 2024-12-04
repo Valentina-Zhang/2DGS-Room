@@ -178,21 +178,18 @@
       </div>
 </section> -->
 
-<!-- 
-<div class="content has-text-centered">
-  <div class="columns is-centered has-text-centered"></div>
-  <video class="video" width="90%" id="ablation1" loop="" playsinline="" autoplay="" muted="" src="./static/videos/scene0050_00_2dgs.mp4" onplay="resizeAndPlay(this)"></video>
-  <canvas class="videoMerge" id="ablation1Merge"></canvas>
-</div> -->
-
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <!-- 设置视频的高度为适当值，或者根据容器调整 -->
+      <video class="video" width="100%" id="teaser" loop playsinline autoplay muted src="./static/videos/scene0050_00.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+      <canvas height=0 class="videoMerge" id="teaserMerge"></canvas>
+</div>
+
+<!-- <div class="row">
+  <div class="col-md-8 col-md-offset-2">
     <video class="video" width="100%" id="teaser" loop playsinline autoplay muted src="./static/videos/scene0050_00.mp4" onplay="resizeAndPlay(this)" style="height: 400px;"></video>
-    <!-- 画布同样要设置合适的高度 -->
     <canvas height="400" class="videoMerge" id="teaserMerge"></canvas>
   </div>
-</div>
+</div> -->
 
 
 </section>
