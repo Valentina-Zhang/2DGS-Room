@@ -209,57 +209,83 @@ body {
 }
 
 
+/* 容器 */
 .video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 让视频容器铺满整个视口高度 */
   position: relative;
   width: 100%;
-  max-width: 800px;
+  height: auto;
+  overflow: hidden;
+  max-width: 1080px; /* 设置最大宽度，防止视频过大超出屏幕 */
   margin: auto;
 }
-
-/* .video {
-  display: none;
-}  */
-
 .video {
-  display: none;
-	width: 50%;
-	height: auto;
-	position: relative;
-	top: 0;
-	left: 0;
-}
-
-.video.active {
-  display: block;
   width: 100%;
+  height: auto;
+  display: none; /* 初始隐藏所有视频 */
+  max-width: auto; /* 视频最大宽度为网页宽度 */
 }
 
+.active {
+  display: block; /* 显示当前活动的视频 */
+}
+
+/* 视频比较容器样式 */
 .video-compare-container {
-	width: 63%;
-	margin: 0 auto;
-	position: relative;
-	display: block;
-	line-height: 0;
+  width: 63%;
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  line-height: 0;
 }
-  
 
+/* 视频样式 - 适应容器 */
 .hvideo {
-	width: auto;
-	height: 100%;
-	position: relative;
-	top: 0;
-	left: 0;
+  width: auto;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
+/* 合并视频效果 */
 .videoMerge {
-	position: relative;
-	top: 0;
-	left: 0;
-	z-index: 10;
-	width: 100%;
-	display: block;
-	margin: 0 auto;
-	background-size: cover;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  background-size: cover;
+}
+
+/* 控制按钮样式 */
+.controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none; /* 防止点击阻塞视频控件 */
+}
+
+.control-button {
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+  pointer-events: all; /* 允许按钮点击 */
 }
 
 .controls {
@@ -300,6 +326,7 @@ body {
   right: 10px;
 }
 
+/* 导航点样式 */
 .nav-dots {
   text-align: center;
   padding: 20px;
@@ -318,4 +345,9 @@ body {
 
 .active-dot {
   background-color: #717171;
+}
+
+/* 圆角样式 */
+.rounded-corners {
+  border-radius: 10px;
 }
