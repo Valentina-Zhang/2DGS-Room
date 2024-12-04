@@ -216,14 +216,49 @@ body {
   margin: auto;
 }
 
-.video {
+/* .video {
   display: none;
-} */
+}  */
 
 .video.active {
   display: block;
 }
 
+.video-compare-container {
+	width: 63%;
+	margin: 0 auto;
+	position: relative;
+	display: block;
+	line-height: 0;
+}
+  
+.video {
+  display: none;
+	width: 100%;
+	height: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+  
+.hvideo {
+	width: auto;
+	height: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.videoMerge {
+	position: relative;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+	background-size: cover;
+}
 
 .controls {
   position: absolute;
@@ -281,11 +316,4 @@ body {
 
 .active-dot {
   background-color: #717171;
-}
-
-.wide-image {
-  width: 80%; /* 设置宽度为120%，使其比容器宽 */
-  max-width: none; /* 确保宽度不会被限制 */
-  height: auto; /* 保持图片的纵横比 */
-  margin-left: -20%; /* 负的左外边距，使图片居中 */
 }
