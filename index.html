@@ -183,16 +183,22 @@
   <canvas class="videoMerge" id="ablation1Merge"></canvas>
 </div> -->
 
-<section class="hero is-small is-centered has-text-centered">
-  <!-- <h2 class="title is-3">Reconstruction Results</h2> -->
-  <div class="hero-body">
-<!-- <div class="columns is-centered has-text-centered"> -->
-  <div class="video-container">
-    
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
     <video class="video" width="100%" id="teaser" loop playsinline autoplay muted src="./static/videos/scene0050_00.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
     <canvas height=0 class="videoMerge" id="teaserMerge"></canvas>
+</div>
+</div>
 
-    <!-- <video class="video rounded-corners active" autoplay controls muted loop playsinline height="100%">
+
+
+<!-- 
+<section class="hero is-small is-centered has-text-centered">
+  <h2 class="title is-3">Reconstruction Results</h2>
+  <div class="hero-body">
+  <div class="video-container">
+  
+    <video class="video rounded-corners active" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/gs-0050.mp4" type="video/mp4">
     </video>
     <video class="video rounded-corners" autoplay controls muted loop playsinline height="100%">
@@ -209,7 +215,7 @@
     </video>
     <video class="video rounded-corners" autoplay controls muted loop playsinline height="100%">
       <source src="./static/videos/reconstruction_results/gs-8d.mp4" type="video/mp4">
-    </video> -->
+    </video>
 
     <!-- 控制按钮 -->
     <div class="controls">
@@ -217,7 +223,7 @@
       <button class="control-button next" onclick="nextVideo()">❯</button>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- 导航点 -->
 <div class="nav-dots">

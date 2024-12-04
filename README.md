@@ -6,12 +6,16 @@
   
 
 
-[Wanting Zhang](https://scholar.google.com/citations?user=V6mBA5IAAAAJ), [Haodong Xiang](https://github.com/Valentina-Zhang), [Zhichao Liao](https://scholar.google.com.hk/citations?user=4eRwbOEAAAAJ&hl=zh-CN), [Xinghui Li](https://github.com/Crayon-Shinchan)✉, [Long Zeng](https://www.sigs.tsinghua.edu.cn/cl/main.htm) <br />
+[Wanting Zhang](https://scholar.google.com/citations?user=V6mBA5IAAAAJ), [Haodong Xiang](https://github.com/Valentina-Zhang), [Zhichao Liao](https://scholar.google.com.hk/citations?user=4eRwbOEAAAAJ&hl=zh-CN), [Xiansong Lai], [Xinghui Li](https://github.com/Crayon-Shinchan)✉, [Long Zeng](https://www.sigs.tsinghua.edu.cn/cl/main.htm)✉ <br />
 
 
 ### [[`Project Page`](https://Valentina-Zhang.github.io/2DGS-Room/)][[`arxiv`](https://arxiv.org/abs/2405.19671)][[`Paper`](https://arxiv.org/pdf/2405.19671)]
 </div>
 
+<p align="center">
+<img src="./static/images/teaser.png" width=100% height=100% 
+class="center">
+</p>
 
 ## 📃 Abstract
 The reconstruction of indoor scenes remains challenging due to the inherent complexity of spatial structures and the prevalence of textureless regions. 
@@ -43,14 +47,14 @@ We further introduce an adaptive growth and pruning strategy to optimize seed po
 ## 🖊 Citation
 If you find this project useful in your research, please consider cite:
 
-```
+<!-- ```
 @article{zhang20242DGS-Room,
   title={2DGS-Room: Seed-Guided 2D Gaussian Splatting with Geometric Constrains for High-Fidelity Indoor Scene Reconstruction},
   author={Xiang, Haodong and Li, Xinghui and Lai, Xiansong and Zhang, Wanting and Liao, Zhichao and Cheng, Kai and Liu, Xueping},
   journal={arXiv preprint arXiv:2405.19671},
   year={2024}
 }
-```
+``` -->
 
 <!-- # Website License
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. -->
