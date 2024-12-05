@@ -48,9 +48,9 @@ We further introduce an adaptive growth and pruning strategy to optimize seed po
 If you find this project useful in your research, please consider cite:
 
 ```
-@article{zhang20242dgsroom,
+@article{zhang20242dgs-room,
   title={2DGS-Room: Seed-Guided 2D Gaussian Splatting with Geometric Constrains for High-Fidelity Indoor Scene Reconstruction},
-  author={Wanting Zhang and Haodong Xiang and Zhichao Liao and Xiansong Lai and Xinghui Li and Long Zeng},
+  author={Zhang, Wanting and Xiang, Haodong and Liao, Zhichao and Lai, Xiansong and Li, Xinghui and Zeng, Long},
   journal={arXiv preprint arXiv:2412.03428},
   year={2024}
 }
